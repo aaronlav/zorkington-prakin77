@@ -7,33 +7,126 @@ function ask(questionText) {
   });
 }
 
-// remember the StateMachine lecture
-// https://bootcamp.burlingtoncodeacademy.com/lessons/cs/state-machines
-let states = {
-  'roomOne': { canChangeTo: [ 'roomTwo' ] },
-  'roomTwo': { canChangeTo: [ 'roomThree' ] },
-  'roomThree': { canChangeTo: [ 'roomOne' ] }
-};
+//------------------------------------------------------------------------------------------------------------------------
+//Rule sets and templates
 
-let currentState = "green";
+//player object
+const player = {
+  name: null,
+  currentRoom: null,
+  inventory: [],
+  status: [],
 
-function enterState(newState) {
-  let validTransitions = states[currentState].canChangeTo;
-  if (validTransitions.includes(newState)) {
-    currentState = newState;
-  } else {
-    throw 'Invalid state transition attempted - from ' + currentState + ' to ' + newState;
+  lookAround: () => {
+    return this.currentRoom.description
+  },
+
+  //move
+  changeRoom: (room) => {
+    if (!room.isLocked) {
+      player.currentRoom = room
+    } else {
+      console.log(`The ${room.name} is locked...`)
+    }
+  },
+
+  //pick up
+  pickUp: (item) => {
+    if (item.takeable === true) {
+      player.inventory.push(item);
+      player.currentRoom.removeItem(item);
+      return `You pick up a ${item.name}`
+    } else {
+      return "You can't take that"
+    }
+  },
+
+  //drop item
+  dropItem: (itemName) => {
+    let item = player.inventory.find((object) => {
+      return object.name === itemName
+    })
+    let dropped = player.inventory.splice(player.inventory.indexOf(item), 1);
+    //console.log(dropped)
+    player.currentRoom.addItem(dropped[0])
+  },
+  //make item
+
+  //use items
+  useItem: (item) => {
+    item.action()
   }
 }
 
-start();
+//Room template
+class Room {
+  constructor(name, description, inventory, north, south, east, west) {
+    //name and description should be strings, inventory is an array of objects, directions are strings
 
-async function start() {
-  const welcomeMessage = `182 Main St.
-You are standing on Main Street between Church and South Winooski.
-There is a door here. A keypad sits on the handle.
-On the door is a handwritten sign.`;
-  let answer = await ask(welcomeMessage);
-  console.log('Now write your code to make this work!');
-  process.exit();
+    this.name = name;
+    this.description = description;
+    this.inventory = inventory || [];
+    this.isLocked = false;
+    this.north = north || null;
+    this.south = south || null;
+    this.east = east || null;
+    this.west = west || null;
+
+    this.unlock = () => {
+      if (player.inventory.includes(obObjs['key'])) {
+        if (this.isLocked === false) {
+          return ('The door is already unlocked')
+        } else {
+          this.isLocked = false;
+          return ("The door unlocks with an audible click.")
+        }
+      } else {
+        return "You don't have a key..."
+      }
+    };
+
+    this.removeItem = (itemName) => {
+      let item = this.inventory.find((object) => {
+        return object.name === itemName
+      })
+
+      this.inventory.splice(this.inventory.indexOf(item), 1);
+    };
+
+    this.addItem = (item) => {
+      this.inventory.push(item)
+    };
+
+    this.examineItem = (item) => {
+      return item.description
+    };
+
+    this.enterRoom = () => {
+      return (this.name + '\n' + this.description)
+    }
+
+  }
+}
+
+//Items object definition
+class InvObj {
+  constructor(name, desc, takeable, action) {
+    //name and desc should be strings, takeable is a boolean, action should be a function
+    this.name = name;
+    this.description = desc;
+    this.takeable = takeable;
+    this.action = action
+  }
+}
+
+//acceptable commands
+const commands = {
+  affirmative: ['yes', 'yesh', 'yup', 'y', 'yeah', 'ok', ''],
+  move: ['go', 'move', 'head', 'walk', 'run', 'crawl', 'skip', 'enter', 'continue'],
+  examine: ['look', 'examine', 'check', 'study', 'inspect'],
+  take: ['pick', 'take', 'grab', 'steal', 'buy'],
+  use: ['use', 'give', 'eat', 'drink'],
+  unlock: ['unlock', 'open'],
+  immolate: ['immolate', 'ignite', 'light', 'burn'],
+  drop: ['drop', 'remove']
 }
