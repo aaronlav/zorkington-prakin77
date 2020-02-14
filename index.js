@@ -75,20 +75,6 @@ async function play(currentRoom) {
   }
 }
 
-
-
-<<<<<<< HEAD
-=======
-// remember the StateMachine lecture
-// https://bootcamp.burlingtoncodeacademy.com/lessons/cs/state-machines
-
-const player = {
-  name: null,
-  inventory: null,
-  currentRoom: null,
-}
-
->>>>>>> ac093c6f96f95ecbdb9fb904bbb99e28e2fc1f77
 // let rooms = 
 // [room1,
 // room2,
@@ -149,7 +135,7 @@ let roomIsLocked = {
 
 // }
 
-let sign1 = 'Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything!'
+let sign1 = 'Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything in just 12 weeks!'
 
 let sign2 = 'Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!'
 
@@ -166,7 +152,7 @@ let roomInventory = {
   room3: ['chair'],
   room4: null,
   room5:[sign2],
-  room6: ["Fair Trade Certified Organic Zork Breakfast Tea", "Fair Trade Certified Organic  Tea", 'Unfair Trade British Tea', 'Slave Labor Certified "Food" Grade Leaf Product'],
+  room6: ["Fair Trade Certified Organic Zork Breakfast Tea", "Fair Trade Certified Organic Lemon Zinger Tea", 'Unfair Trade British Tea', 'Slave Labor Certified "Food" Grade Leaf Product'],
   room7:[sign3],
   room8: [ 'Large Two Meat Zorker with Bacon and Sausage', 'Small Two Meat Zorker with Bacon and Sausage', 'Large One Meat Zorker with Bacon', 'Large One Meat Zorker with Sausage'],
   room9:[sign4],
