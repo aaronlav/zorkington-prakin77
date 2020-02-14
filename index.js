@@ -133,22 +133,18 @@ let roomIsLocked = {
   room10: true,
 }
 
-// let signText = {
-//   sign1: 'Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything!',
-//   sign2: 'Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!',
-//   sign3: 'Kountry Zork: Home of the Zorker',
-//   sign4: 'Zorkplain Farms: All Zork Trail products on sale',
+class Item {
+  constructor(name, desc, takeable){
+    this.name = name,
+    this.description = desc,
+    this.takeable = takeable
+  }
+}
 
-// }
-
-let sign1 = 'Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything!'
-
-let sign2 = 'Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!'
-
-let sign3 = 'Kountry Zork: Home of the Zorker'
-
-let sign4 = 'Zorkplain Farms: All Zork Trail products on sale!'
-
+let sign1 = new Item('Zorkington Code Academy Sign', 'Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything!', false)
+let sign2 = new Item('Zorkington City Market Sign', 'Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!', false)
+let sign3 = new Item('Kountry Zork Sign', 'Kountry Zork: Home of the Zorker', false)
+let sign4 = new Item('Zorkplain Farms Sign', 'Zorkplain Farms: All Zork Trail products on sale!', false)
 
 let roomInventory = {
   room1: [sign1],
