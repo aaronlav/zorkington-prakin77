@@ -183,21 +183,13 @@ let roomIsLocked = {
 
 // }
 
-let sign1 = {
-  'Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything!'
-}
+let sign1 = 'Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything!'
 
-let sign2 = {
-  'Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!'
-}
+let sign2 = 'Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!'
 
-let sign3 = {
-  'Kountry Zork: Home of the Zorker'
-}
+let sign3 = 'Kountry Zork: Home of the Zorker'
 
-let sign4 = {
-  'Zorkplain Farms: All Zork Trail products on sale!'
-}
+let sign4 = 'Zorkplain Farms: All Zork Trail products on sale!'
 
 let roomInventory = {
   room1: [sign1],
