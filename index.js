@@ -53,9 +53,9 @@ class Room {
   showInventory() {
     console.log("Here you find: " + this.inventory);
   }
-  unlockDoor(input){
+  unlockDoor(input) {
     let passowrd = "00000"
-    if (input.includes(password)){
+    if (input.includes(password)) {
       return true;
     }
   }
@@ -63,23 +63,43 @@ class Room {
 
 //Setting up Player class and constructor
 class Player {
-  constructor(name, inventory){
+  constructor(name, inventory) {
     this.name = name;
-    this.inventory=inventory || [];
+    this.inventory = inventory || [];
   }
-checkName(){
-  return this.name;
+  checkName() {
+    return this.name;
+  }
+  getInventory(item) {
+    global.game.currentRoom.removeInventory(item);
+    this.inventory.push(item);
+  }
+  dropInventory(item) {
+    this.inventory.splice(this.inventory.indexOf(item), 1);
+    global.game.currentRoom.addInventory(item);
+  }
+  showInventory() {
+    console.log("You currently have " + this.inventory);
+  }
 }
-getInventory(item){
-  global.game.currentRoom.removeInventory(item);
-  this.inventory.push(item);
+
+//Setting up game functions
+async function startGame() {
+  console.log("WELCOME TO JORKINGTON"); //title
+  console.log("We're going to take you on an advanture. \nLet's get started ... ")
+  let userName = await ask("Hi! Jorking buddy, what's your name? \n>");
+  global.game = new GameState(userName);
+  play(global.game.currentRoom);
 }
-dropInventory(item){
-  this.inventory.splice(this.inventory.indexOf(item), 1);
-  global.game.currentRoom.addInventory(item);
+
+//Setting up Current Room function
+async function play(currentRoom) {
+  if (currentRoom.roomName === roomNames.room1) {
+    console.log("You're in "+ this.roomNames);
+  } else {
+    console.log("Not a room");
+  }
 }
-showInventory(){
-  console.log("You currently have "+ this.inventory);
-}
-}
+
+
 
