@@ -20,20 +20,20 @@ function ask(questionText) {
 // end readline code------------------------
 
 // setting up the game classes & constructors
-class Gamestate {
-  constructor(userName) {
-    this.currentRoom = roomNames.room1;
-    this.user = new Player(userName);
-  }
+// class Gamestate {
+//   constructor(userName) {
+//     this.currentRoom = roomName.room1;
+//     this.user = new Player(userName);
+//   }
 
-  moveToRoom(nextRoom) {
-    this.currentRoom = rooms[nextRoom];
-  }
+//   moveToRoom(nextRoom) {
+//     this.currentRoom = rooms[nextRoom];
+//   }
 
-  printState() {
-    console.log(this);
-  }
-}
+//   printState() {
+//     console.log(this);
+//   }
+// }
 
 //Setting up Player class and constructor
 class Player {
@@ -62,8 +62,8 @@ async function startGame() {
   console.log("WELCOME TO JORKINGTON"); //title
   console.log("We're going to take you on an advanture \n that you have never had before. \nLet's get started ... ")
   let userName = await ask("Hi! Jorking buddy, what's your name? \n>_");
-  global.game = new GameState(userName);
-  play(global.game.currentRoom);
+  // global.game = new GameState(userName);
+  play(currentRoom);
 }
 
 //Setting up Current Room function
@@ -141,7 +141,7 @@ let roomIsLocked = {
 
 // }
 
-let sign1 = 'Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything in just 12 weeks!'
+let sign1 = 'Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything!'
 
 let sign2 = 'Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!'
 
@@ -156,7 +156,7 @@ let roomInventory = {
   room3: ['chair'],
   room4: null,
   room5:[sign2],
-  room6: ["Fair Trade Certified Organic Zork Breakfast Tea", "Fair Trade Certified Organic Lemon Zinger Tea", 'Unfair Trade British Tea', 'Slave Labor Certified "Food" Grade Leaf Product'],
+  room6: ["Fair Trade Certified Organic Zork Breakfast Tea", "Fair Trade Certified Organic  Tea", 'Unfair Trade British Tea', 'Slave Labor Certified "Food" Grade Leaf Product'],
   room7:[sign3],
   room8: [ 'Large Two Meat Zorker with Bacon and Sausage', 'Small Two Meat Zorker with Bacon and Sausage', 'Large One Meat Zorker with Bacon', 'Large One Meat Zorker with Sausage'],
   room9:[sign4],
@@ -201,3 +201,4 @@ let room9 = new Room(roomNames['room9'], roomDescriptions['room9'], roomInventor
 let room10 = new Room(roomNames['room10'], roomDescriptions['room10'], roomInventory['room10'], roomIsLocked['room10'])
 
 startGame()
+currentRoom()
