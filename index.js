@@ -157,7 +157,7 @@ let roomInventory = {
   room3: ['chair'],
   room4: null,
   room5:[sign2],
-  room6: ["Fair Trade Certified Organic Zork Breakfast Tea", "Fair Trade Certified Organic Lemon Zinger Tea", 'Unfair Trade British Tea', 'Slave Labor Certified "Food" Grade Leaf Product'],
+  room6: ["Fair Trade Certified Organic Zork Breakfast Tea", "Fair Trade Certified Organic  Tea", 'Unfair Trade British Tea', 'Slave Labor Certified "Food" Grade Leaf Product'],
   room7:[sign3],
   room8: [ 'Large Two Meat Zorker with Bacon and Sausage', 'Small Two Meat Zorker with Bacon and Sausage', 'Large One Meat Zorker with Bacon', 'Large One Meat Zorker with Sausage'],
   room9:[sign4],
@@ -202,4 +202,3 @@ let room9 = new Room(roomNames['room9'], roomDescriptions['room9'], roomInventor
 let room10 = new Room(roomNames['room10'], roomDescriptions['room10'], roomInventory['room10'], roomIsLocked['room10'])
 
 startGame()
-GameState()
