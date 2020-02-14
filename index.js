@@ -103,26 +103,6 @@ async function play(currentRoom) {
 
 
 
-// remember the StateMachine lecture
-// https://bootcamp.burlingtoncodeacademy.com/lessons/cs/state-machines
-
-const player = {
-  name: null,
-  inventory: null,
-  currentRoom: null,
-}
-
-class Room {
-constructor(name, description, inventory, isLocked) {
-  this.name = name;
-  this.description = description;
-  this.inventory = inventory || [];
-  this.isLocked = isLocked;
-  }
-}
-
-
-
 // let rooms = 
 // [room1,
 // room2,
@@ -187,9 +167,12 @@ let sign1 = 'Zorkington Code Academy: Learn the Meaning of Life, the Universe, a
 
 let sign2 = 'Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!'
 
+
 let sign3 = 'Kountry Zork: Home of the Zorker'
 
+
 let sign4 = 'Zorkplain Farms: All Zork Trail products on sale!'
+
 
 let roomInventory = {
   room1: [sign1],
