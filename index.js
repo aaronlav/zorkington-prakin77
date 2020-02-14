@@ -35,32 +35,6 @@ class Gamestate {
   }
 }
 
-// setting up Room classes & constructor
-class Room {
-  constructor(roomName, description, inventory, isLocked) {
-    this.roomName = roomName;
-    this.description = description[this.roomDescriptions];
-    this.inventory = inventory || [];
-    this.isLocked = isLocked(true, false);
-  }
-
-  addInventory(item) {
-    this.inventory.push(item);
-  }
-  removeInventory(item) {
-    this.inventory.splice(this.inventory.indexOf(item), 1)
-  }
-  showInventory() {
-    console.log("Here you find: " + this.inventory);
-  }
-  unlockDoor(input) {
-    let passowrd = "00000"
-    if (input.includes(password)) {
-      return true;
-    }
-  }
-}
-
 //Setting up Player class and constructor
 class Player {
   constructor(name, inventory) {
@@ -103,6 +77,18 @@ async function play(currentRoom) {
 
 
 
+<<<<<<< HEAD
+=======
+// remember the StateMachine lecture
+// https://bootcamp.burlingtoncodeacademy.com/lessons/cs/state-machines
+
+const player = {
+  name: null,
+  inventory: null,
+  currentRoom: null,
+}
+
+>>>>>>> ac093c6f96f95ecbdb9fb904bbb99e28e2fc1f77
 // let rooms = 
 // [room1,
 // room2,
@@ -187,17 +173,39 @@ let roomInventory = {
   room10: ["Bob's Keys", 'Zork Trail Brewing Company Zork Hopper IPA'],
 }
 
-let room1 = new Room(roomNames[room1], roomDescriptions[room1], roomInventory[room1], roomIsLocked[room1])
-let room2 = new Room(roomNames[room2], roomDescriptions[room2], roomInventory[room2], roomIsLocked[room2])
-let room3 = new Room(roomNames[room3], roomDescriptions[room3], roomInventory[room3], roomIsLocked[room3])
-let room4 = new Room(roomNames[room4], roomDescriptions[room4], roomInventory[room4], roomIsLocked[room4])
-let room5 = new Room(roomNames[room5], roomDescriptions[room5], roomInventory[room5], roomIsLocked[room5])
-let room6 = new Room(roomNames[room6], roomDescriptions[room6], roomInventory[room6], roomIsLocked[room6])
-let room7 = new Room(roomNames[room7], roomDescriptions[room7], roomInventory[room7], roomIsLocked[room7])
-let room8 = new Room(roomNames[room8], roomDescriptions[room8], roomInventory[room8], roomIsLocked[room8])
-let room9 = new Room(roomNames[room9], roomDescriptions[room9], roomInventory[room9], roomIsLocked[room9])
-let room10 = new Room(roomNames[room10], roomDescriptions[room10], roomInventory[room10], roomIsLocked[room10])
+// setting up Room classes & constructor
+class Room {
+  constructor(roomName, description, inventory, isLocked) {
+    this.roomName = roomName;
+    this.description = description[this.roomDescriptions];
+    this.inventory = inventory || [];
+    this.isLocked = isLocked;
+  }
 
-// for(let room of rooms){
-  
-// }
+  addInventory(item) {
+    this.inventory.push(item);
+  }
+  removeInventory(item) {
+    this.inventory.splice(this.inventory.indexOf(item), 1)
+  }
+  showInventory() {
+    console.log("Here you find: " + this.inventory);
+  }
+  unlockDoor(input) {
+    let passowrd = "00000"
+    if (input.includes(password)) {
+      return true;
+    }
+  }
+}
+
+let room1 = new Room(roomNames['room1'], roomDescriptions['room1'], roomInventory['room1'], roomIsLocked['room1'])
+let room2 = new Room(roomNames['room2'], roomDescriptions['room2'], roomInventory['room2'], roomIsLocked['room2'])
+let room3 = new Room(roomNames['room3'], roomDescriptions['room3'], roomInventory['room3'], roomIsLocked['room3'])
+let room4 = new Room(roomNames['room4'], roomDescriptions['room4'], roomInventory['room4'], roomIsLocked['room4'])
+let room5 = new Room(roomNames['room5'], roomDescriptions['room5'], roomInventory['room5'], roomIsLocked['room5'])
+let room6 = new Room(roomNames['room6'], roomDescriptions['room6'], roomInventory['room6'], roomIsLocked['room6'])
+let room7 = new Room(roomNames['room7'], roomDescriptions['room7'], roomInventory['room7'], roomIsLocked['room7'])
+let room8 = new Room(roomNames['room8'], roomDescriptions['room8'], roomInventory['room8'], roomIsLocked['room8'])
+let room9 = new Room(roomNames['room9'], roomDescriptions['room9'], roomInventory['room9'], roomIsLocked['room9'])
+let room10 = new Room(roomNames['room10'], roomDescriptions['room10'], roomInventory['room10'], roomIsLocked['room10'])
