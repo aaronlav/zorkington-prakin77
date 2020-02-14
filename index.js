@@ -22,7 +22,7 @@ function ask(questionText) {
 // setting up the game classes & constructors
 class Gamestate {
   constructor(userName) {
-    this.currentRoom = rooms.room1;
+    this.currentRoom = roomNames.room1;
     this.user = new Player(userName);
   }
 
@@ -60,8 +60,8 @@ class Player {
 //Setting up game functions
 async function startGame() {
   console.log("WELCOME TO JORKINGTON"); //title
-  console.log("We're going to take you on an advanture. \nLet's get started ... ")
-  let userName = await ask("Hi! Jorking buddy, what's your name? \n>");
+  console.log("We're going to take you on an advanture \n that you have never had before. \nLet's get started ... ")
+  let userName = await ask("Hi! Jorking buddy, what's your name? \n>_");
   global.game = new GameState(userName);
   play(global.game.currentRoom);
 }
@@ -73,6 +73,12 @@ async function play(currentRoom) {
   } else {
     console.log("Not a room");
   }
+}
+
+const player = {
+  name: null,
+  inventory: null,
+  currentRoom: null,
 }
 
 // let rooms = 
@@ -139,7 +145,6 @@ let sign1 = 'Zorkington Code Academy: Learn the Meaning of Life, the Universe, a
 
 let sign2 = 'Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!'
 
-
 let sign3 = 'Kountry Zork: Home of the Zorker'
 
 
@@ -195,3 +200,6 @@ let room7 = new Room(roomNames['room7'], roomDescriptions['room7'], roomInventor
 let room8 = new Room(roomNames['room8'], roomDescriptions['room8'], roomInventory['room8'], roomIsLocked['room8'])
 let room9 = new Room(roomNames['room9'], roomDescriptions['room9'], roomInventory['room9'], roomIsLocked['room9'])
 let room10 = new Room(roomNames['room10'], roomDescriptions['room10'], roomInventory['room10'], roomIsLocked['room10'])
+
+startGame()
+GameState()
