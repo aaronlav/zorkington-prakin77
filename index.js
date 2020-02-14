@@ -147,7 +147,6 @@ let sign2 = 'Zorkington City Market: Your Community Store for all you Fair Trade
 
 let sign3 = 'Kountry Zork: Home of the Zorker'
 
-
 let sign4 = 'Zorkplain Farms: All Zork Trail products on sale!'
 
 
@@ -202,4 +201,3 @@ let room9 = new Room(roomNames['room9'], roomDescriptions['room9'], roomInventor
 let room10 = new Room(roomNames['room10'], roomDescriptions['room10'], roomInventory['room10'], roomIsLocked['room10'])
 
 startGame()
-GameState()
