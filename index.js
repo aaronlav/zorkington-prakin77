@@ -1,6 +1,6 @@
 /**
  *    Week 2 BCA Project:
- *    Zorkington - a text based adventure game 
+ *    Zorkington - a text based adventure game
  *    Developed by: Jay Subedi, Jon Russel
  *    Date: 2/14/2020
  */
@@ -19,84 +19,21 @@ function ask(questionText) {
 }
 // end readline code------------------------
 
-// setting up the game classes & constructors
-// class Gamestate {
-//   constructor(userName) {
-//     this.currentRoom = roomName.room1;
-//     this.user = new Player(userName);
-//   }
-
-//   moveToRoom(nextRoom) {
-//     this.currentRoom = rooms[nextRoom];
-//   }
-
-//   printState() {
-//     console.log(this);
-//   }
-// }
-
 //Setting up Player class and constructor
 class Player {
   constructor(name, inventory) {
     this.name = name;
     this.inventory = inventory || [];
   }
-  checkName() {
-    return this.name;
-  }
-  getInventory(item) {
-    global.game.currentRoom.removeInventory(item);
-    this.inventory.push(item);
-  }
-  dropInventory(item) {
-    this.inventory.splice(this.inventory.indexOf(item), 1);
-    global.game.currentRoom.addInventory(item);
-  }
-  showInventory() {
-    console.log("You currently have " + this.inventory);
-  }
 }
 
 //Setting up game functions
-async function startGame() {
-  console.log("WELCOME TO JORKINGTON"); //title
-  console.log("We're going to take you on an advanture \n that you have never had before. \nLet's get started ... ")
-  let userName = await ask("Hi! Jorking buddy, what's your name? \n>_");
-  // global.game = new GameState(userName);
-  play(currentRoom);
-}
 
-//Setting up Current Room function
-async function play(currentRoom) {
-  if (currentRoom.roomName === roomNames.room1) {
-    console.log("You're in "+ this.roomNames);
-  } else {
-    console.log("Not a room");
-  }
-}
-
-const player = {
-  name: null,
-  inventory: null,
-  currentRoom: null,
-}
-
-// let rooms = 
-// [room1,
-// room2,
-// room3,
-// room4,
-// room5,
-// room6,
-// room7,
-// room8,
-// room9,
-// room10]
-
+function changeRoom(currentRoom, direction) {}
 
 let roomNames = {
-  room1: '182 Zork Street',
-  room2:  "Foyer",
+  room1: "182 Zork Street",
+  room2: "Foyer",
   room3: "Classroom",
   room4: "Corner of Zork Street and Zorkooski Avenue",
   room5: "North Zorkooski Avenue",
@@ -104,21 +41,31 @@ let roomNames = {
   room7: "West Zork Street",
   room8: "Kountry Zork Deli",
   room9: "South Zorkooski Avenue",
-  room10: "Zorkplain Farms",
-}
+  room10: "Zorkplain Farms"
+};
 
 let roomDescriptions = {
-  room1: 'You are in front of 182 Zork Street, Zorkington, Zorkmont. You are in the center of town. Zork Street runs either direction east and west. The entrance to Zorkington Code Academy is directly to your North. There is a sign in the window',
-  room2: 'You are in the foyer of 182 Zork Street, the classroom of Zorkington Code Academy is farther down to the North. You see your instructor, Bob, sitting fast asleep outside the classroom.',
-  room3: 'You are in a moderately sized classroom with some tables and chairs. A small whiteboard is at the front with some leftover work from yesterdays lesson.',
-  room4: 'You are at the corner where Zork Street intersects Zorkooski Avenue. Zorkington Code Academy is to your West down Zork Street, and you can see Zorkington City Market to your North, and Zorkplain Farms to your south on Zorkooski Ave.',
-  room5: 'You are in front of Zorkington City Market on North Zorkooski Ave. It is a relatively large grocery store with a strange mixture of both rich and homeless people going in and out. There is a sign on the front of the building',
-  room6: 'You are inside of Zorkington City Market. It smells weird. Amoung many strange products, you see a large display on one side of the store with many different kinds of tea.',
-  room7: 'You are west of Zorkington Code Academy on Zork Street, Kountry Zork Deli lies to your South. The delicious smell of bacon and sausage waft out of the kitchen to you. There is a sign in the window',
-  room8: 'You are inside of Kountry Zork Deli, you see a peak of some fantastic meats sizziling on the flatop in the kitchen in the back. An employee is at the counter in front of you.',
-  room9: 'You are in front of Zorkplain Farms, a small gas station and convenience store on South Zorkooski Ave. There is a sign in the window.',
-  room10: 'You are inside of Zorkplain Farms. There are a couple aisles with snacks and drinks and a large beer cooler.',
-}
+  room1:
+    "You are in front of 182 Zork Street, Zorkington, Zorkmont. You are in the center of town. Zork Street runs either direction east and west. The entrance to Zorkington Code Academy is directly to your North. There is a sign in the window",
+  room2:
+    "You are in the foyer of 182 Zork Street, the classroom of Zorkington Code Academy is farther down to the North. You see your instructor, Bob, sitting fast asleep outside the classroom.",
+  room3:
+    "You are in a moderately sized classroom with some tables and chairs. A small whiteboard is at the front with some leftover work from yesterdays lesson.",
+  room4:
+    "You are at the corner where Zork Street intersects Zorkooski Avenue. Zorkington Code Academy is to your West down Zork Street, and you can see Zorkington City Market to your North, and Zorkplain Farms to your south on Zorkooski Ave.",
+  room5:
+    "You are in front of Zorkington City Market on North Zorkooski Ave. It is a relatively large grocery store with a strange mixture of both rich and homeless people going in and out. There is a sign on the front of the building",
+  room6:
+    "You are inside of Zorkington City Market. It smells weird. Amoung many strange products, you see a large display on one side of the store with many different kinds of tea.",
+  room7:
+    "You are west of Zorkington Code Academy on Zork Street, Kountry Zork Deli lies to your South. The delicious smell of bacon and sausage waft out of the kitchen to you. There is a sign in the window",
+  room8:
+    "You are inside of Kountry Zork Deli, you see a peak of some fantastic meats sizziling on the flatop in the kitchen in the back. An employee is at the counter in front of you.",
+  room9:
+    "You are in front of Zorkplain Farms, a small gas station and convenience store on South Zorkooski Ave. There is a sign in the window.",
+  room10:
+    "You are inside of Zorkplain Farms. There are a couple aisles with snacks and drinks and a large beer cooler."
+};
 
 let roomIsLocked = {
   room1: false,
@@ -130,71 +77,355 @@ let roomIsLocked = {
   room7: false,
   room8: true,
   room9: false,
-  room10: true,
-}
+  room10: true
+};
 
 class Item {
-  constructor(name, desc, takeable){
-    this.name = name,
-    this.description = desc,
-    this.takeable = takeable
+  constructor(name, desc, takeable) {
+    (this.name = name), (this.description = desc), (this.takeable = takeable);
   }
 }
 
-let sign1 = new Item('Zorkington Code Academy Sign', 'Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything!', false)
-let sign2 = new Item('Zorkington City Market Sign', 'Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!', false)
-let sign3 = new Item('Kountry Zork Sign', 'Kountry Zork: Home of the Zorker', false)
-let sign4 = new Item('Zorkplain Farms Sign', 'Zorkplain Farms: All Zork Trail products on sale!', false)
+let sign1 = new Item(
+  "Zorkington Code Academy Sign",
+  "Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything!",
+  false
+);
+let sign2 = new Item(
+  "Zorkington City Market Sign",
+  "Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!",
+  false
+);
+let sign3 = new Item(
+  "Kountry Zork Sign",
+  "Kountry Zork: Home of the Zorker",
+  false
+);
+let sign4 = new Item(
+  "Zorkplain Farms Sign",
+  "Zorkplain Farms: All Zork Trail products on sale!",
+  false
+);
 
 let roomInventory = {
   room1: [sign1],
-  room2: ['Bob','Tea Station','Inferior Tea'],
-  room3: ['chair'],
+  room2: ["Bob", "Tea Station", "Inferior Tea"],
+  room3: ["chair"],
   room4: null,
-  room5:[sign2],
-  room6: ["Fair Trade Certified Organic Zork Breakfast Tea", "Fair Trade Certified Organic  Tea", 'Unfair Trade British Tea', 'Slave Labor Certified "Food" Grade Leaf Product'],
-  room7:[sign3],
-  room8: [ 'Large Two Meat Zorker with Bacon and Sausage', 'Small Two Meat Zorker with Bacon and Sausage', 'Large One Meat Zorker with Bacon', 'Large One Meat Zorker with Sausage'],
-  room9:[sign4],
-  room10: ["Bob's Keys", 'Zork Trail Brewing Company Zork Hopper IPA'],
-}
+  room5: [sign2],
+  room6: [
+    "Fair Trade Certified Organic Zork Breakfast Tea",
+    "Fair Trade Certified Organic  Tea",
+    "Unfair Trade British Tea",
+    'Slave Labor Certified "Food" Grade Leaf Product'
+  ],
+  room7: [sign3],
+  room8: [
+    "Large Two Meat Zorker with Bacon and Sausage",
+    "Small Two Meat Zorker with Bacon and Sausage",
+    "Large One Meat Zorker with Bacon",
+    "Large One Meat Zorker with Sausage"
+  ],
+  room9: [sign4],
+  room10: ["Bob's Keys", "Zork Trail Brewing Company Zork Hopper IPA"]
+};
 
 // setting up Room classes & constructor
 class Room {
-  constructor(roomName, description, inventory, isLocked) {
-    this.roomName = roomName;
-    this.description = description[this.roomDescriptions];
+  constructor(
+    name,
+    description,
+    inventory,
+    isLocked,
+    north,
+    east,
+    south,
+    west
+  ) {
+    this.name = name;
+    this.description = description;
     this.inventory = inventory || [];
     this.isLocked = isLocked;
-  }
-
-  addInventory(item) {
-    this.inventory.push(item);
-  }
-  removeInventory(item) {
-    this.inventory.splice(this.inventory.indexOf(item), 1)
-  }
-  showInventory() {
-    console.log("Here you find: " + this.inventory);
-  }
-  unlockDoor(input) {
-    let passowrd = "00000"
-    if (input.includes(password)) {
-      return true;
-    }
+    this.north = north;
+    this.east = east;
+    this.south = south;
+    this.west = west;
   }
 }
 
-let room1 = new Room(roomNames['room1'], roomDescriptions['room1'], roomInventory['room1'], roomIsLocked['room1'])
-let room2 = new Room(roomNames['room2'], roomDescriptions['room2'], roomInventory['room2'], roomIsLocked['room2'])
-let room3 = new Room(roomNames['room3'], roomDescriptions['room3'], roomInventory['room3'], roomIsLocked['room3'])
-let room4 = new Room(roomNames['room4'], roomDescriptions['room4'], roomInventory['room4'], roomIsLocked['room4'])
-let room5 = new Room(roomNames['room5'], roomDescriptions['room5'], roomInventory['room5'], roomIsLocked['room5'])
-let room6 = new Room(roomNames['room6'], roomDescriptions['room6'], roomInventory['room6'], roomIsLocked['room6'])
-let room7 = new Room(roomNames['room7'], roomDescriptions['room7'], roomInventory['room7'], roomIsLocked['room7'])
-let room8 = new Room(roomNames['room8'], roomDescriptions['room8'], roomInventory['room8'], roomIsLocked['room8'])
-let room9 = new Room(roomNames['room9'], roomDescriptions['room9'], roomInventory['room9'], roomIsLocked['room9'])
-let room10 = new Room(roomNames['room10'], roomDescriptions['room10'], roomInventory['room10'], roomIsLocked['room10'])
+let room1 = new Room(
+  roomNames["room1"],
+  roomDescriptions["room1"],
+  roomInventory["room1"],
+  roomIsLocked["room1"],
+  "room2",
+  "room4",
+  null,
+  "room7"
+);
+let room2 = new Room(
+  roomNames["room2"],
+  roomDescriptions["room2"],
+  roomInventory["room2"],
+  roomIsLocked["room2"],
+  "room3",
+  null,
+  "room1",
+  null
+);
+let room3 = new Room(
+  roomNames["room3"],
+  roomDescriptions["room3"],
+  roomInventory["room3"],
+  roomIsLocked["room3"],
+  null,
+  null,
+  "room2",
+  null
+);
+let room4 = new Room(
+  roomNames["room4"],
+  roomDescriptions["room4"],
+  roomInventory["room4"],
+  roomIsLocked["room4"],
+  "room5",
+  null,
+  "room9",
+  "room1"
+);
+let room5 = new Room(
+  roomNames["room5"],
+  roomDescriptions["room5"],
+  roomInventory["room5"],
+  roomIsLocked["room5"],
+  null,
+  "room6",
+  "room4",
+  null
+);
+let room6 = new Room(
+  roomNames["room6"],
+  roomDescriptions["room6"],
+  roomInventory["room6"],
+  roomIsLocked["room6"],
+  null,
+  null,
+  null,
+  "room5"
+);
+let room7 = new Room(
+  roomNames["room7"],
+  roomDescriptions["room7"],
+  roomInventory["room7"],
+  roomIsLocked["room7"],
+  null,
+  "room1",
+  "room8",
+  null
+);
+let room8 = new Room(
+  roomNames["room8"],
+  roomDescriptions["room8"],
+  roomInventory["room8"],
+  roomIsLocked["room8"],
+  "room7",
+  null,
+  null,
+  null
+);
+let room9 = new Room(
+  roomNames["room9"],
+  roomDescriptions["room9"],
+  roomInventory["room9"],
+  roomIsLocked["room9"],
+  "room4",
+  "room10",
+  null,
+  null
+);
+let room10 = new Room(
+  roomNames["room10"],
+  roomDescriptions["room10"],
+  roomInventory["room10"],
+  roomIsLocked["room10"],
+  null,
+  null,
+  null,
+  "room9"
+);
 
-startGame()
-currentRoom()
+let roomLookup = {
+  'room1': room1,
+  'room2': room2,
+  'room3': room3,
+  'room4': room4,
+  'room5': room5,
+  'room6': room6,
+  'room7': room7,
+  'room8': room8,
+  'room9': room9,
+  'room10': room10
+};
+
+let bobResponses = ['*snore* I... need... Fair Trade Certified Organic Zork Breakfast Tea... *snore*',"This... sucks...", "I must have lost my keys last night, but I can’t remember where. If only I had a Large Two Meat Shiner with Bacon and Sausage, then I could remember!", "Wow, thanks! I love tea.","Oh now I remember, the last time I had my keys was when I was buying Long Trail Brewing Company Trail Hopper IPA at Champlain Farms last night. Maybe they’re still there?", "Wow, thanks! I love shiners!", "You found my keys! Wow, thanks for all the help. I never could have done this on my own. Please have a seat in the classroom, I'll tell you the Meaning of Life, the Universe, and Everything!"]
+
+async function startGame() {
+  console.log("WELCOME TO ZORKINGTON"); //title
+  let userName = await ask("What is your name? \n>_");
+  console.log(
+    "Greetings, " +
+      userName +
+      "! You are about to embark on a great adventure.\nIt begins early on a seemingly normal monday morning.\nYou are a new student of Zorkington Code academy, and this is your first day.\nYou arrive early for class and are about to walk inside.\nBut not everything is as ordinary as it seems...\n"
+  );
+  let player = {
+    name:userName,
+    inventory: {
+      tea: [],
+      shiner: [],
+      keys: [],
+    }
+  };
+  let currentRoom = room1;
+  let response = "";
+  let bobAsleep = true;
+  let bobForget = true;
+  let bobNoKeys = true;
+  let nextRoom = undefined;
+  
+  while (response != "exit") {
+    nextRoom = undefined
+    console.log(currentRoom.name);
+    console.log(currentRoom.description);
+    
+    response = await ask(">_");
+    response = response.toLowerCase();
+    
+    if (response.includes("talk to bob") || response.includes('wake up bob')){
+      if (currentRoom != room2){
+        console.log("Bob isn't here!")
+      } else {
+      if (bobAsleep === true){
+        room6.isLocked = false
+        console.log(bobResponses[0])
+        }
+     }
+    }
+    if (response.includes('buy tea') || response.includes('take tea')){
+      if (currentRoom === room6) {
+        player.inventory.tea.push('tea')
+        console.log('You bought some tea')
+      } else {
+        console.log('There is no tea here!')
+      }
+    }
+    if (response.includes('give bob tea')){
+      if (currentRoom != room2) {
+        console.log("Bob isn't here!")
+      } else {
+        if (player.inventory.tea.includes('tea')){
+          if (bobAsleep === true){
+          player.inventory.tea.pop()
+          bobAsleep = false
+          console.log(bobResponses[2])
+          room8.isLocked = false
+          }else {
+            player.inventory.tea.pop()
+            console.log(bobResponses[3])
+          } 
+        }else {
+          console.log("You don't have any tea!")
+        }
+      }
+    }
+    
+    if (response.includes('buy shiner') || response.includes('take shiner')){
+      if (currentRoom === room8) {
+        player.inventory.shiner.push('shiner')
+        console.log('You bought a shiner')
+      } else {
+        console.log('There is no shiner here!')
+      }
+    }
+    if (response.includes('give bob shiner')){
+      if (currentRoom != room2) {
+        console.log("Bob isn't here!")
+      } else {
+        if (player.inventory.shiner.includes('shiner')){
+          if (bobForget === true){
+          player.inventory.shiner.pop()
+          bobForget = false
+          console.log(bobResponses[4])
+          room10.isLocked = false
+          }else {
+            player.inventory.shiner.pop()
+            console.log(bobResponses[5])
+          } 
+        }else {
+          console.log("You don't have a shiner!")
+        }
+      }
+    }
+    if (response.includes('search') || response.includes('look')){
+      if (currentRoom === room10) {
+        player.inventory.keys.push('keys')
+        console.log("Amoung the cases of Zork Trail you find Bob's keys")
+      } else {
+        console.log('There is no keys here!')
+      }
+    }
+    if (response.includes('give bob keys')){
+      if (currentRoom != room2) {
+        console.log("Bob isn't here!")
+      } else {
+        if (player.inventory.keys.includes('keys')){
+          if (bobNoKeys === true){
+          player.inventory.keys.pop()
+          bobNoKeys = false
+          console.log(bobResponses[6])
+          room3.isLocked = false
+          }else {
+            player.inventory.keys.pop()
+            console.log(bobResponses[7])
+          } 
+        }else {
+          console.log("You don't have a keys!")
+        }
+      }
+    }
+    if (response.includes("sit")) {
+      if (currentRoom === room3){
+        console.log('Bob comes into the classroom and prepares his notes for the lecture.\nHe clears his throat and proclaims:\n"It\'s 42."')
+        console.log('Congragulations, you won!')
+        process.exit()
+      }
+    }
+    
+    if (response.includes("go north")) {
+      nextRoom = roomLookup[currentRoom.north];
+    }
+    if (response.includes("go east")) {
+      nextRoom = roomLookup[currentRoom.east];
+    }
+    if (response.includes("go south")) {
+      nextRoom = roomLookup[currentRoom.south];
+    }
+    if (response.includes("go west")) {
+      nextRoom = roomLookup[currentRoom.west];
+      }
+    if (nextRoom != undefined && nextRoom != null){
+      if (nextRoom.isLocked === true) {
+        console.log("The door is locked.");
+      }
+      if (nextRoom.isLocked === false) {
+        currentRoom = nextRoom;
+      }
+    }
+    if (nextRoom === null) {
+      console.log("You can't go that way!");
+    }
+    if (response === "exit") {
+      process.exit();
+    }
+  }
+}
+startGame();
