@@ -84,49 +84,28 @@ class Item {
   constructor(name, desc, takeable) {
     (this.name = name), (this.description = desc), (this.takeable = takeable);
   }
-}
-
-let sign1 = new Item(
-  "Zorkington Code Academy Sign",
-  "Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything!",
-  false
-);
-let sign2 = new Item(
-  "Zorkington City Market Sign",
-  "Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!",
-  false
-);
-let sign3 = new Item(
-  "Kountry Zork Sign",
-  "Kountry Zork: Home of the Zorker",
-  false
-);
-let sign4 = new Item(
-  "Zorkplain Farms Sign",
-  "Zorkplain Farms: All Zork Trail products on sale!",
-  false
-);
+};
 
 let roomInventory = {
-  room1: [sign1],
+  room1: [],
   room2: ["Bob", "Tea Station", "Inferior Tea"],
   room3: ["chair"],
   room4: null,
-  room5: [sign2],
+  room5: [],
   room6: [
     "Fair Trade Certified Organic Zork Breakfast Tea",
     "Fair Trade Certified Organic  Tea",
     "Unfair Trade British Tea",
     'Slave Labor Certified "Food" Grade Leaf Product'
   ],
-  room7: [sign3],
+  room7: [],
   room8: [
     "Large Two Meat Zorker with Bacon and Sausage",
     "Small Two Meat Zorker with Bacon and Sausage",
     "Large One Meat Zorker with Bacon",
     "Large One Meat Zorker with Sausage"
   ],
-  room9: [sign4],
+  room9: [],
   room10: ["Bob's Keys", "Zork Trail Brewing Company Zork Hopper IPA"]
 };
 
@@ -140,7 +119,8 @@ class Room {
     north,
     east,
     south,
-    west
+    west,
+    sign
   ) {
     this.name = name;
     this.description = description;
@@ -150,6 +130,7 @@ class Room {
     this.east = east;
     this.south = south;
     this.west = west;
+    this.sign = sign;
   }
 }
 
@@ -161,7 +142,9 @@ let room1 = new Room(
   "room2",
   "room4",
   null,
-  "room7"
+  "room7",
+  "Zorkington Code Academy: Learn the Meaning of Life, the Universe, and Everything!",
+
 );
 let room2 = new Room(
   roomNames["room2"],
@@ -171,7 +154,8 @@ let room2 = new Room(
   "room3",
   null,
   "room1",
-  null
+  null,
+  "There's no sign here!",
 );
 let room3 = new Room(
   roomNames["room3"],
@@ -181,7 +165,8 @@ let room3 = new Room(
   null,
   null,
   "room2",
-  null
+  null,
+  "There's no sign here!",
 );
 let room4 = new Room(
   roomNames["room4"],
@@ -191,7 +176,8 @@ let room4 = new Room(
   "room5",
   null,
   "room9",
-  "room1"
+  "room1",
+  "There's no sign here!",
 );
 let room5 = new Room(
   roomNames["room5"],
@@ -201,7 +187,9 @@ let room5 = new Room(
   null,
   "room6",
   "room4",
-  null
+  null,
+  "Zorkington City Market: Your Community Store for all you Fair Trade and Certified Organic needs!",
+
 );
 let room6 = new Room(
   roomNames["room6"],
@@ -211,7 +199,8 @@ let room6 = new Room(
   null,
   null,
   null,
-  "room5"
+  "room5",
+  "There's no sign here!",
 );
 let room7 = new Room(
   roomNames["room7"],
@@ -221,7 +210,8 @@ let room7 = new Room(
   null,
   "room1",
   "room8",
-  null
+  null,
+  "Kountry Zork: Home of the Zorker",
 );
 let room8 = new Room(
   roomNames["room8"],
@@ -231,7 +221,8 @@ let room8 = new Room(
   "room7",
   null,
   null,
-  null
+  null,
+  "There's no sign here!",
 );
 let room9 = new Room(
   roomNames["room9"],
@@ -241,7 +232,8 @@ let room9 = new Room(
   "room4",
   "room10",
   null,
-  null
+  null,
+  "Zorkplain Farms: All Zork Trail on sale!",
 );
 let room10 = new Room(
   roomNames["room10"],
@@ -251,7 +243,8 @@ let room10 = new Room(
   null,
   null,
   null,
-  "room9"
+  "room9",
+  "There's no sign here!",
 );
 
 let roomLookup = {
@@ -267,7 +260,7 @@ let roomLookup = {
   'room10': room10
 };
 
-let bobResponses = ['*snore* I... need... Fair Trade Certified Organic Zork Breakfast Tea... *snore*',"This... sucks...", "I must have lost my keys last night, but I can’t remember where. If only I had a Large Two Meat Shiner with Bacon and Sausage, then I could remember!", "Wow, thanks! I love tea.","Oh now I remember, the last time I had my keys was when I was buying Long Trail Brewing Company Trail Hopper IPA at Champlain Farms last night. Maybe they’re still there?", "Wow, thanks! I love shiners!", "You found my keys! Wow, thanks for all the help. I never could have done this on my own. Please have a seat in the classroom, I'll tell you the Meaning of Life, the Universe, and Everything!"]
+let bobResponses = ['*snore* I... need... Fair Trade Certified Organic Zork Breakfast Tea... *snore*',"This... sucks...", "I must have lost my keys last night, but I can’t remember where. If only I had a Large Two Meat Zorker with Bacon and Sausage, then I could remember!", "Wow, thanks! I love tea.","Oh now I remember, the last time I had my keys was when I was buying Long Trail Brewing Company Trail Hopper IPA at Champlain Farms last night. Maybe they’re still there?", "Wow, thanks! I love Zorkers!", "You found my keys! Wow, thanks for all the help. I never could have done this on my own. Please have a seat in the classroom, I'll tell you the Meaning of Life, the Universe, and Everything!"]
 
 async function startGame() {
   console.log("WELCOME TO ZORKINGTON"); //title
@@ -281,7 +274,7 @@ async function startGame() {
     name:userName,
     inventory: {
       tea: [],
-      shiner: [],
+      zorker: [],
       keys: [],
     }
   };
@@ -299,6 +292,10 @@ async function startGame() {
     
     response = await ask(">_");
     response = response.toLowerCase();
+
+    if (response.includes('read sign') || response.includes('read the sign') || response.includes('look at sign') || response.includes('look at the sign') || response.includes('examine sign') || response.includes('examine the sign')) {
+      console.log(currentRoom.sign)
+    }
     
     if (response.includes("talk to bob") || response.includes('wake up bob')){
       if (currentRoom != room2){
@@ -338,39 +335,41 @@ async function startGame() {
       }
     }
     
-    if (response.includes('buy shiner') || response.includes('take shiner')){
+    if (response.includes('buy zorker') || response.includes('take zorker')){
       if (currentRoom === room8) {
-        player.inventory.shiner.push('shiner')
-        console.log('You bought a shiner')
+        player.inventory.zorker.push('zorker')
+        console.log('You bought a zorker')
       } else {
-        console.log('There is no shiner here!')
+        console.log('There is no zorker here!')
       }
     }
-    if (response.includes('give bob shiner')){
+    if (response.includes('give bob zorker')){
       if (currentRoom != room2) {
         console.log("Bob isn't here!")
       } else {
-        if (player.inventory.shiner.includes('shiner')){
+        if (player.inventory.zorker.includes('zorker')){
           if (bobForget === true){
-          player.inventory.shiner.pop()
+          player.inventory.zorker.pop()
           bobForget = false
           console.log(bobResponses[4])
           room10.isLocked = false
           }else {
-            player.inventory.shiner.pop()
+            player.inventory.zorker.pop()
             console.log(bobResponses[5])
           } 
         }else {
-          console.log("You don't have a shiner!")
+          console.log("You don't have a zorker!")
         }
       }
     }
     if (response.includes('search') || response.includes('look')){
       if (currentRoom === room10) {
-        player.inventory.keys.push('keys')
-        console.log("Amoung the cases of Zork Trail you find Bob's keys")
+        if (bobNoKeys === true) {
+          player.inventory.keys.push('keys')
+          console.log("Amoung the cases of Zork Trail you find Bob's keys")
+        }
       } else {
-        console.log('There is no keys here!')
+        console.log('There are no keys here!')
       }
     }
     if (response.includes('give bob keys')){
@@ -383,12 +382,12 @@ async function startGame() {
           bobNoKeys = false
           console.log(bobResponses[6])
           room3.isLocked = false
-          }else {
+          } else {
             player.inventory.keys.pop()
             console.log(bobResponses[7])
           } 
-        }else {
-          console.log("You don't have a keys!")
+        } else {
+          console.log("You don't have any keys!")
         }
       }
     }
@@ -397,6 +396,8 @@ async function startGame() {
         console.log('Bob comes into the classroom and prepares his notes for the lecture.\nHe clears his throat and proclaims:\n"It\'s 42."')
         console.log('Congragulations, you won!')
         process.exit()
+      } else {
+        console.log("You don't have time to sit down!")
       }
     }
     
