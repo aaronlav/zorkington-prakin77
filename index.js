@@ -238,10 +238,13 @@ let bobResponses = [
   '"*snore* I... need... Fair Trade Certified Organic Zork Breakfast Tea... *snore*"',
   '"This... sucks..."',
   'Even with his eyes closed, Bob instictively grasps the cup of tea and lifts it to his mouth. The moment the tea touches his lips his eyes burst open, and he looks around himself wildly confused for a moment. "Oh man, what a night I had last night! I must have lost my keys, but I can’t remember where. If only I had a Large Two Meat Zorker with Bacon and Sausage, then I could remember!"',
+  '"Oh man, what a night I had last night! I must have lost my keys, but I can’t remember where. If only I had a Large Two Meat Zorker with Bacon and Sausage, then I could remember!"',
   '"Wow, thanks! I love tea."',
   '"Mmmm this is a good sandwich. I can feel the bacon and sausage repairing the synapses in my brain. Oh, now I remember! The last time I had my keys was when I was buying Zork Trail Brewing Company Zork Hopper IPA at Zorkplain Farms last night. Maybe my keys are still there?"',
+  '"The last time I had my keys was when I was buying Zork Trail Brewing Company Zork Hopper IPA at Zorkplain Farms last night. Maybe my keys are still there?"',
   '"Wow, thanks! I love Zorkers!"',
-  '"You found my keys! Wow, thanks for all the help. I never could have done this on my own. Please have a seat in the classroom, I\'ll tell you the Meaning of Life, the Universe, and Everything!"'
+  '"You found my keys! Wow, thanks for all the help. I never could have done this on my own. Please have a seat in the classroom, I\'ll tell you the Meaning of Life, the Universe, and Everything!"',
+  '"Please have a seat in the classroom."'
 ];
 
 //Game function
@@ -367,13 +370,24 @@ async function startGame() {
 
     //Talking to bob
 
-    if (response.includes("talk to bob") || response.includes("wake up bob")) {
+    if (response.includes("talk to bob") || response.includes("wake up bob") || response.includes("intereact bob") || response.includes("intereact with bob")) {
       if (currentRoom != room2) {
         console.log("Bob isn't here!");
       } else {
         if (bobAsleep === true) {
           room6.isLocked = false;
           console.log(bobResponses[0]);
+        } else {
+          if (bobForget === true){
+            console.log(bobResponses[3])
+          } else {
+            if (bobNoKeys === true) {
+              console.log(bobResponses[6])
+            }
+            else {
+              console.log(bobResponses[9])
+            }
+          }
         }
       }
     }
@@ -398,9 +412,10 @@ async function startGame() {
             bobAsleep = false;
             console.log(bobResponses[2]);
             room8.isLocked = false;
+            room2.description = "You are in the foyer of 182 Zork Street, the classroom of Zorkington Code Academy is farther down to the North. Your instructor, Bob, is standing groggily outside the classroom."
           } else {
             player.inventory.tea.pop();
-            console.log(bobResponses[3]);
+            console.log(bobResponses[4]);
           }
         } else {
           console.log("You don't have any tea!");
@@ -426,11 +441,11 @@ async function startGame() {
           if (bobForget === true) {
             player.inventory.zorker.pop();
             bobForget = false;
-            console.log(bobResponses[4]);
+            console.log(bobResponses[5]);
             room10.isLocked = false;
           } else {
             player.inventory.zorker.pop();
-            console.log(bobResponses[5]);
+            console.log(bobResponses[7]);
           }
         } else {
           console.log("You don't have a Zorker!");
@@ -458,11 +473,11 @@ async function startGame() {
           if (bobNoKeys === true) {
             player.inventory.keys.pop();
             bobNoKeys = false;
-            console.log(bobResponses[6]);
+            console.log(bobResponses[8]);
             room3.isLocked = false;
           } else {
             player.inventory.keys.pop();
-            console.log(bobResponses[7]);
+            console.log(bobResponses[8]);
           }
         } else {
           console.log("You don't have any keys!");
