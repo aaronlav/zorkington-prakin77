@@ -199,6 +199,8 @@ let roomLookup = {
   room10: room10
 };
 
+// It appears that this code appears above, and since you've already commited, it's okay to remove for the sake of readability
+
 //We're not cool enough to have a Item Class yet!
 //
 //
