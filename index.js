@@ -1,3 +1,6 @@
+/* In the first project story, the response for typing "gargle" is not correctly in place
+*/
+
 /**
  *    Week 2 BCA Project:
  *    Zorkington - a text based adventure game
