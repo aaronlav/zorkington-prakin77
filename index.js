@@ -1,4 +1,5 @@
-/* In the first project story, the response for typing "gargle" is not correctly in place
+/* In the first project story, the response for typing "gargle" is not correctly in place, nor is the response for 
+"taking" the sign.
 */
 
 /**
@@ -202,7 +203,12 @@ let roomLookup = {
   room10: room10
 };
 
-// It appears that this code appears above, and since you've already commited, it's okay to remove for the sake of readability
+/* Since you've already commited, it's okay to remove comments for the sake of readability.
+If you're hanging on to partial code that you haven't quite cracked or finished and have an 
+intention of going back to it, try just making another "in progress" file and/or branch.
+
+You were on the right track in using an array to store your inventory. Keep chipping away,
+ you're close! */ 
 
 //We're not cool enough to have a Item Class yet!
 //
@@ -362,6 +368,10 @@ async function startGame() {
 
     //Reading signs
 
+/* A more elegant solution might be to have your if statement look for a more generic statement like "sign", and
+ have some else statements that do NOT include certain responses. This way you avoid the issue of someone
+ trying to type "inspect" or "view", and not getting the desired response.  */
+
     if (
       response.includes("read sign") ||
       response.includes("read the sign") ||
@@ -372,6 +382,12 @@ async function startGame() {
     ) {
       console.log(currentRoom.sign);
     }
+
+/* Similar situation as I mentioned before, the precise nature of the response it takes
+to interact with Bob can make it somewhat challenging for someone who doesn't posess your actual
+code to know what text to input in order to trigger the desired action. Even moreso than my last example, it
+would take a lot of time and be needlessly difficult to try to think of every combination of
+text a user may or may not input. */
 
     //Talking to bob
 
